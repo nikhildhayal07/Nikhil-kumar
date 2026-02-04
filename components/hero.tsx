@@ -18,7 +18,7 @@ function RotatingText() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsVisible(false)
-      
+
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % rotatingRoles.length)
         setIsVisible(true)
@@ -30,11 +30,10 @@ function RotatingText() {
 
   return (
     <span
-      className={`inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold transition-all duration-300 ease-in-out ${
-        isVisible
+      className={`inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold transition-all duration-300 ease-in-out ${isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-2"
-      }`}
+        }`}
     >
       {rotatingRoles[currentIndex]}
     </span>
@@ -50,14 +49,14 @@ export function Hero() {
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-      
+
       {/* Floating icons background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Terminal className="absolute top-20 right-[20%] h-8 w-8 text-primary/10 animate-pulse" />
         <Cloud className="absolute top-40 right-[10%] h-12 w-12 text-primary/10 animate-pulse delay-500" />
         <Code2 className="absolute bottom-40 left-[10%] h-10 w-10 text-primary/10 animate-pulse delay-1000" />
       </div>
-      
+
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
         {/* Centered Hero Content */}
         <div className="flex flex-col items-center text-center space-y-8 mb-16">
@@ -143,6 +142,14 @@ export function Hero() {
           <ArrowDown className="h-5 w-5 text-primary" />
         </div>
       </div>
+    </section>
+  )
+}
+
+export function Hero() {
+  return (
+    <section id="home" className="min-h-screen">
+      ...
     </section>
   )
 }
