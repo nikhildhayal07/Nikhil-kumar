@@ -31,8 +31,8 @@ function RotatingText() {
   return (
     <span
       className={`inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold transition-all duration-300 ease-in-out ${isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 -translate-y-2"
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 -translate-y-2"
         }`}
     >
       {rotatingRoles[currentIndex]}
