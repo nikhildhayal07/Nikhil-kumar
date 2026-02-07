@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Award, ExternalLink, Calendar, Building, CheckCircle2, BadgeCheck, X } from "lucide-react"
 import { AnimatedCard } from "@/components/animated-card"
 import { Button } from "@/components/ui/button"
+import { PlatformsStrip } from "@/components/platforms-strip"
 
 const certifications = [
   {
@@ -99,6 +100,9 @@ export function Certifications() {
             professional development courses.
           </p>
         </div>
+
+        {/* Certified by Leading Platforms Strip */}
+        <PlatformsStrip />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
