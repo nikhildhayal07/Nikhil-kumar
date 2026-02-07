@@ -107,7 +107,7 @@ export function Home() {
             >
               <a href="https://blobs.vusercontent.net/blob/Nikhil%20Kumar%20CV-RjQCLKpEIqUblIGFTaSDrsR9cIg4sE.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2 h-4 w-4" />
-                View CV
+                Download Resume
               </a>
             </Button>
           </div>
