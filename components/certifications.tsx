@@ -1,7 +1,9 @@
 "use client"
 
-import { Award, ExternalLink, Calendar, Building, CheckCircle2, BadgeCheck } from "lucide-react"
+import { useState } from "react"
+import { Award, ExternalLink, Calendar, Building, CheckCircle2, BadgeCheck, X } from "lucide-react"
 import { AnimatedCard } from "@/components/animated-card"
+import { Button } from "@/components/ui/button"
 
 const certifications = [
   {
@@ -18,10 +20,15 @@ const certifications = [
     title: "Introduction to Internet of Things",
     issuer: "NPTEL",
     date: "Jul – Oct 2025",
-    score: "54/75",
     description:
       "12-week course covering IoT fundamentals, sensors, connectivity, and practical applications.",
     verifyUrl: "#",
+    certificate: {
+      title: "Introduction to Internet of Things",
+      image: "https://blobs.vusercontent.net/blob/Introduction%20to%20Internet%20of%20Things-7eJONLhycqchpMdxjFie25PVKnQxpJ.pdf",
+      rollNo: "NPTEL25CS147S958700110",
+      score: "54/75",
+    },
   },
   {
     title: "Software Engineering: Implementation and Testing",
@@ -52,6 +59,8 @@ const certifications = [
 ]
 
 export function Certifications() {
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null)
+
   return (
     <section id="certifications" className="py-24 md:py-32 bg-secondary/30 relative overflow-hidden">
       {/* Background decoration */}
@@ -137,6 +146,18 @@ export function Certifications() {
                   {cert.description}
                 </p>
 
+                {cert.certificate && (
+                  <Button
+                    onClick={() => setSelectedCertificate(cert.certificate)}
+                    variant="outline"
+                    size="sm"
+                    className="w-full mb-3 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary transition-all"
+                  >
+                    <Award className="h-4 w-4 mr-2" />
+                    View Certificate
+                  </Button>
+                )}
+
                 {cert.verifyUrl && cert.verifyUrl !== "#" && (
                   <a
                     href={cert.verifyUrl}
@@ -152,6 +173,46 @@ export function Certifications() {
             </AnimatedCard>
           ))}
         </div>
+
+        {/* Certificate Modal */}
+        {selectedCertificate && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedCertificate(null)}>
+            <div className="bg-card border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto relative" onClick={(e) => e.stopPropagation()}>
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedCertificate(null)}
+                className="absolute top-4 right-4 p-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors z-10"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              {/* Certificate Content */}
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{selectedCertificate.title}</h3>
+                  <p className="text-muted-foreground">
+                    {selectedCertificate.rollNo && (
+                      <>Roll No: <span className="font-semibold text-foreground">{selectedCertificate.rollNo}</span>{selectedCertificate.score && " | "}</>
+                    )}
+                    {selectedCertificate.score && (
+                      <>Score: <span className="font-semibold text-primary">{selectedCertificate.score}</span></>
+                    )}
+                  </p>
+                </div>
+                <object
+                  data={selectedCertificate.image}
+                  type="application/pdf"
+                  className="w-full rounded-xl border border-border"
+                  style={{ minHeight: "600px" }}
+                >
+                  <a href={selectedCertificate.image} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    View PDF
+                  </a>
+                </object>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
