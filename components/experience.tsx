@@ -1,7 +1,9 @@
 "use client"
 
-import { Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react"
+import { useState } from "react"
+import { Briefcase, Calendar, MapPin, ExternalLink, X, Award } from "lucide-react"
 import { AnimatedCard } from "@/components/animated-card"
+import { Button } from "@/components/ui/button"
 
 const experiences = [
   {
@@ -17,6 +19,12 @@ const experiences = [
       "Achieved Grade A certification",
       "Built console-based projects",
     ],
+    certificate: {
+      title: "Basics of DSA using C++",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSAwith%20CPP-oR4Cs5bemQWCgIu9ZojG80sqjV2YzE.jpg",
+      certificateNo: "407273",
+      grade: "A",
+    },
     current: false,
   },
   {
@@ -37,6 +45,8 @@ const experiences = [
 ]
 
 export function Experience() {
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null)
+
   return (
     <section id="experience" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -111,7 +121,7 @@ export function Experience() {
                     </p>
 
                     {/* Highlights */}
-                    <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+                    <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
                       {exp.highlights.map((highlight) => (
                         <span
                           key={highlight}
@@ -121,6 +131,19 @@ export function Experience() {
                         </span>
                       ))}
                     </div>
+
+                    {/* Certificate Button */}
+                    {exp.certificate && (
+                      <Button
+                        onClick={() => setSelectedCertificate(exp.certificate)}
+                        variant="outline"
+                        size="sm"
+                        className="w-full md:w-auto border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary transition-all"
+                      >
+                        <Award className="h-4 w-4 mr-2" />
+                        View Certificate
+                      </Button>
+                    )}
                   </div>
                 </AnimatedCard>
               </div>
@@ -128,6 +151,36 @@ export function Experience() {
           ))}
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      {selectedCertificate && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedCertificate(null)}>
+          <div className="bg-card border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto relative" onClick={(e) => e.stopPropagation()}>
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedCertificate(null)}
+              className="absolute top-4 right-4 p-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors z-10"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Certificate Content */}
+            <div className="p-6">
+              <div className="mb-4">
+                <h3 className="text-2xl font-bold text-foreground mb-2">{selectedCertificate.title}</h3>
+                <p className="text-muted-foreground">
+                  Certificate No: <span className="font-semibold text-foreground">{selectedCertificate.certificateNo}</span> | Grade: <span className="font-semibold text-primary">{selectedCertificate.grade}</span>
+                </p>
+              </div>
+              <img
+                src={selectedCertificate.image}
+                alt={selectedCertificate.title}
+                className="w-full rounded-xl border border-border"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
