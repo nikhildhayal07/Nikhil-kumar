@@ -15,6 +15,13 @@ const certifications = [
       "Comprehensive course covering sorting, searching, recursion, dynamic programming, and greedy algorithms. Built strong foundation for technical interviews.",
     verifyUrl: "#",
     featured: true,
+    certificate: {
+      title: "Basics of DSA using C++",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSAwith%20CPP-R707MDyN16RC3a7PQPm5PcjjCVlJtP.jpg",
+      certificateNo: "407273",
+      registrationNo: "12307121",
+      grade: "A",
+    },
   },
   {
     title: "Introduction to Internet of Things",
@@ -191,24 +198,28 @@ export function Certifications() {
                 <div className="mb-4">
                   <h3 className="text-2xl font-bold text-foreground mb-2">{selectedCertificate.title}</h3>
                   <p className="text-muted-foreground">
+                    {selectedCertificate.certificateNo && (
+                      <>Certificate No: <span className="font-semibold text-foreground">{selectedCertificate.certificateNo}</span></>
+                    )}
+                    {selectedCertificate.registrationNo && (
+                      <> | Registration No: <span className="font-semibold text-foreground">{selectedCertificate.registrationNo}</span></>
+                    )}
                     {selectedCertificate.rollNo && (
-                      <>Roll No: <span className="font-semibold text-foreground">{selectedCertificate.rollNo}</span>{selectedCertificate.score && " | "}</>
+                      <>Roll No: <span className="font-semibold text-foreground">{selectedCertificate.rollNo}</span></>
                     )}
                     {selectedCertificate.score && (
-                      <>Score: <span className="font-semibold text-primary">{selectedCertificate.score}</span></>
+                      <> | Score: <span className="font-semibold text-primary">{selectedCertificate.score}</span></>
+                    )}
+                    {selectedCertificate.grade && (
+                      <> | Grade: <span className="font-semibold text-primary">{selectedCertificate.grade}</span></>
                     )}
                   </p>
                 </div>
-                <object
-                  data={selectedCertificate.image}
-                  type="application/pdf"
-                  className="w-full rounded-xl border border-border"
-                  style={{ minHeight: "600px" }}
-                >
-                  <a href={selectedCertificate.image} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                    View PDF
-                  </a>
-                </object>
+              <img
+                src={selectedCertificate.image}
+                alt={selectedCertificate.title}
+                className="w-full rounded-xl border border-border"
+              />
               </div>
             </div>
           </div>
