@@ -5,7 +5,7 @@ import { AnimatedCard } from "@/components/animated-card"
 
 export function Achievements() {
   return (
-    <section className="py-24 md:py-32">
+    <section id="achievements" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-primary font-medium tracking-wide mb-4">
