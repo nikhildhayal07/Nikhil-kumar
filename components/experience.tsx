@@ -40,6 +40,11 @@ const experiences = [
       "Gained hands-on experience",
       "Networked with industry experts",
     ],
+    certificate: {
+      title: "HackVerse 2024 Participation",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nikhil%20certificate-Kjiuv2R0iQgLpVgI2ujdIfes40JcEA.jpg",
+      certificateNo: "HV24/352",
+    },
     current: false,
   },
 ]
@@ -169,7 +174,7 @@ export function Experience() {
               <div className="mb-4">
                 <h3 className="text-2xl font-bold text-foreground mb-2">{selectedCertificate.title}</h3>
                 <p className="text-muted-foreground">
-                  Certificate No: <span className="font-semibold text-foreground">{selectedCertificate.certificateNo}</span> | Grade: <span className="font-semibold text-primary">{selectedCertificate.grade}</span>
+                  Certificate No: <span className="font-semibold text-foreground">{selectedCertificate.certificateNo}</span>{selectedCertificate.grade && ` | Grade: `}<span className="font-semibold text-primary">{selectedCertificate.grade}</span>
                 </p>
               </div>
               <img
