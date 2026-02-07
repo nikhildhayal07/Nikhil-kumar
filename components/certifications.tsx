@@ -7,6 +7,18 @@ import { Button } from "@/components/ui/button"
 
 const certifications = [
   {
+    title: "AWS Academy Graduate – Cloud Architecting",
+    issuer: "AWS Academy",
+    date: "January 2026",
+    credentialType: "Training Badge",
+    hours: "60 Hours",
+    description:
+      "Completed the AWS Academy Graduate – Cloud Architecting program, gaining hands-on experience in designing scalable, secure, and highly available cloud architectures using AWS services, including compute, storage, networking, and security best practices.",
+    verifyUrl: "https://www.credly.com/go/NgUCeZ1Z",
+    featured: true,
+    isPrimary: true,
+  },
+  {
     title: "Basics of DSA using C++",
     issuer: "Lovely Professional University",
     date: "Jun 2025 – Jul 2025",
@@ -14,7 +26,7 @@ const certifications = [
     description:
       "Comprehensive course covering sorting, searching, recursion, dynamic programming, and greedy algorithms. Built strong foundation for technical interviews.",
     verifyUrl: "#",
-    featured: true,
+    featured: false,
     certificate: {
       title: "Basics of DSA using C++",
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSAwith%20CPP-R707MDyN16RC3a7PQPm5PcjjCVlJtP.jpg",
@@ -93,14 +105,22 @@ export function Certifications() {
             <AnimatedCard key={cert.title} delay={index * 100}>
               <div
                 className={`group relative p-6 rounded-2xl bg-card border transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 h-full overflow-hidden ${
-                  cert.featured
+                  cert.isPrimary
+                    ? "md:col-span-2 lg:col-span-1 border-primary/60 ring-2 ring-primary/30 shadow-lg shadow-primary/20"
+                    : cert.featured
                     ? "border-primary/50 ring-1 ring-primary/20"
                     : "border-border hover:border-primary/50"
                 }`}
               >
                 {/* Animated accent line on hover */}
                 <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-primary via-primary/80 to-primary/50 transition-all duration-400 ease-in-out group-hover:w-full" />
-                {cert.featured && (
+                {cert.isPrimary && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full mb-4">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Top Certification
+                  </span>
+                )}
+                {cert.featured && !cert.isPrimary && (
                   <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full mb-4">
                     <CheckCircle2 className="h-3 w-3" />
                     Top Certification
