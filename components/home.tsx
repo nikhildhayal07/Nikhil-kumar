@@ -62,13 +62,6 @@ export function Home() {
         {/* Centered Hero Content */}
         <div className="flex flex-col items-center text-center space-y-8 mb-16">
           <div className="space-y-4">
-            {/* Home Name Section */}
-            <div className="inline-block mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="text-sm font-semibold tracking-widest text-primary uppercase bg-primary/10 border border-primary/30 rounded-full px-6 py-2">
-                Welcome Home
-              </div>
-            </div>
-            
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
