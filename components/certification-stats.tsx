@@ -12,9 +12,9 @@ interface Stat {
 
 export function CertificationStats() {
   const [counts, setCounts] = useState([0, 0, 0, 0])
-  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
   const intervalsRef = useRef<NodeJS.Timeout[]>([])
+  const hasAnimatedRef = useRef(false)
 
   const stats: Stat[] = [
     { icon: <Award className="h-6 w-6" />, label: "Certifications", value: 8, suffix: "+" },
@@ -23,47 +23,43 @@ export function CertificationStats() {
     { icon: <Target className="h-6 w-6" />, label: "Core Domains", value: 3, suffix: "" },
   ]
 
-  const startAnimation = () => {
-    // Clear any existing intervals
-    intervalsRef.current.forEach(timer => clearInterval(timer))
-    intervalsRef.current = []
-    
-    // Reset counts to 0
-    setCounts([0, 0, 0, 0])
-
-    // Animate numbers counting up
-    stats.forEach((stat, index) => {
-      let current = 0
-      const increment = Math.ceil(stat.value / 30) // Divide into 30 steps for smooth animation
-      const timer = setInterval(() => {
-        current += increment
-        if (current >= stat.value) {
-          current = stat.value
-          clearInterval(timer)
-        }
-        setCounts((prev) => {
-          const newCounts = [...prev]
-          newCounts[index] = current
-          return newCounts
-        })
-      }, 50) // 1.5 second total animation (30 steps * 50ms)
-      
-      intervalsRef.current.push(timer)
-    })
-  }
-
   useEffect(() => {
+    // Clear any existing intervals
+    const clearIntervals = () => {
+      intervalsRef.current.forEach(timer => clearInterval(timer))
+      intervalsRef.current = []
+    }
+
+    // Start animation immediately
+    const startAnimation = () => {
+      clearIntervals()
+      setCounts([0, 0, 0, 0])
+
+      stats.forEach((stat, index) => {
+        let current = 0
+        const increment = Math.ceil(stat.value / 30)
+        const timer = setInterval(() => {
+          current += increment
+          if (current >= stat.value) {
+            current = stat.value
+            clearInterval(timer)
+          }
+          setCounts((prev) => {
+            const newCounts = [...prev]
+            newCounts[index] = current
+            return newCounts
+          })
+        }, 50)
+        
+        intervalsRef.current.push(timer)
+      })
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
+        if (entry.isIntersecting) {
           startAnimation()
-        } else if (!entry.isIntersecting && isVisible) {
-          // Reset when leaving viewport
-          setIsVisible(false)
-          intervalsRef.current.forEach(timer => clearInterval(timer))
-          intervalsRef.current = []
-          setCounts([0, 0, 0, 0])
+          hasAnimatedRef.current = true
         }
       },
       { threshold: 0.1 }
@@ -75,9 +71,9 @@ export function CertificationStats() {
 
     return () => {
       observer.disconnect()
-      intervalsRef.current.forEach(timer => clearInterval(timer))
+      clearIntervals()
     }
-  }, [isVisible])
+  }, [])
 
   return (
     <div ref={sectionRef} className="mb-16 grid grid-cols-2 md:grid-cols-4 gap-4">
