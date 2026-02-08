@@ -102,11 +102,11 @@ export function Certifications() {
           </p>
         </div>
 
-        {/* Certified by Leading Platforms Strip */}
-        <PlatformsStrip />
-
         {/* Animated Statistics Cards */}
         <CertificationStats />
+
+        {/* Certified by Leading Platforms Strip */}
+        <PlatformsStrip />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
