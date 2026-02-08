@@ -121,12 +121,15 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(
-      circle at top,
-      rgba(20, 241, 217, 0.06),
-      transparent 45%
-    );
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' opacity='0.02' filter='url(%23noise)' /%3E%3C/svg%3E"),
+      radial-gradient(
+        circle at top,
+        rgba(20, 241, 217, 0.06),
+        transparent 45%
+      );
     background-attachment: fixed;
+    background-blend-mode: overlay;
   }
   
   /* Custom scrollbar */
@@ -170,6 +173,24 @@ section {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Noise texture overlay for cards and flat surfaces */
+.noise-texture {
+  position: relative;
+}
+
+.noise-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23ffffff' opacity='0.01' filter='url(%23noise)' /%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
 }
 
 /* Skill bar animation */
