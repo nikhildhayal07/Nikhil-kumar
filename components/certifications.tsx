@@ -5,6 +5,7 @@ import { Award, ExternalLink, Calendar, Building, CheckCircle2, BadgeCheck, X } 
 import { AnimatedCard } from "@/components/animated-card"
 import { Button } from "@/components/ui/button"
 import { PlatformsStrip } from "@/components/platforms-strip"
+import { CertificationStats } from "@/components/certification-stats"
 
 const certifications = [
   {
@@ -103,6 +104,9 @@ export function Certifications() {
 
         {/* Certified by Leading Platforms Strip */}
         <PlatformsStrip />
+
+        {/* Animated Statistics Cards */}
+        <CertificationStats />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
