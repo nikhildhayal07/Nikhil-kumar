@@ -94,11 +94,10 @@ export function Certifications() {
             <span className="text-sm text-primary font-medium">Credentials</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Certifications & Training
+            Certifications & Credentials
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Continuous learning through industry-recognized certifications and
-            professional development courses.
+            Industry-recognized certifications and professional credentials demonstrating expertise and commitment to continuous learning.
           </p>
         </div>
 
