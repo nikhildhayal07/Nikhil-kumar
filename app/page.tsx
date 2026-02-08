@@ -21,7 +21,6 @@ export default function HomePage() {
       <Experience />
       <Projects />
       <Certifications />
-      <HighlightBanner />
       <Achievements />
       <Contact />
       <Footer />
