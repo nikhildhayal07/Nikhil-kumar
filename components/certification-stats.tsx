@@ -17,7 +17,7 @@ export function CertificationStats() {
   const hasAnimatedRef = useRef(false)
 
   const stats: Stat[] = [
-    { icon: <Award className="h-6 w-6" />, label: "Certifications", value: 8, suffix: "+" },
+    { icon: <Award className="h-6 w-6" />, label: "Certifications", value: 10, suffix: "+" },
     { icon: <Clock className="h-6 w-6" />, label: "Learning Hours", value: 100, suffix: "+" },
     { icon: <Layers className="h-6 w-6" />, label: "Learning Platforms", value: 4, suffix: "" },
     { icon: <Target className="h-6 w-6" />, label: "Core Domains", value: 3, suffix: "" },

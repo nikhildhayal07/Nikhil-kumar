@@ -14,7 +14,7 @@ const stats = [
   { value: "3+", label: "Years Learning" },
   { value: "4+", label: "Projects Built" },
   { value: "8+", label: "Technologies" },
-  { value: "3", label: "Certifications" },
+  { value: "10+", label: "Certifications" },
 ]
 
 const highlights = [
