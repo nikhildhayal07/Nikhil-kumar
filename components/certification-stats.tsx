@@ -12,8 +12,9 @@ interface Stat {
 
 export function CertificationStats() {
   const [counts, setCounts] = useState([0, 0, 0, 0])
-  const [hasAnimated, setHasAnimated] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const intervalsRef = useRef<NodeJS.Timeout[]>([])
 
   const stats: Stat[] = [
     { icon: <Award className="h-6 w-6" />, label: "Certifications", value: 8, suffix: "+" },
@@ -22,29 +23,47 @@ export function CertificationStats() {
     { icon: <Target className="h-6 w-6" />, label: "Core Domains", value: 3, suffix: "" },
   ]
 
+  const startAnimation = () => {
+    // Clear any existing intervals
+    intervalsRef.current.forEach(timer => clearInterval(timer))
+    intervalsRef.current = []
+    
+    // Reset counts to 0
+    setCounts([0, 0, 0, 0])
+
+    // Animate numbers counting up
+    stats.forEach((stat, index) => {
+      let current = 0
+      const increment = Math.ceil(stat.value / 30) // Divide into 30 steps for smooth animation
+      const timer = setInterval(() => {
+        current += increment
+        if (current >= stat.value) {
+          current = stat.value
+          clearInterval(timer)
+        }
+        setCounts((prev) => {
+          const newCounts = [...prev]
+          newCounts[index] = current
+          return newCounts
+        })
+      }, 50) // 1.5 second total animation (30 steps * 50ms)
+      
+      intervalsRef.current.push(timer)
+    })
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true)
-          
-          // Animate numbers counting up
-          stats.forEach((stat, index) => {
-            let current = 0
-            const increment = Math.ceil(stat.value / 30) // Divide into 30 steps for smooth animation
-            const timer = setInterval(() => {
-              current += increment
-              if (current >= stat.value) {
-                current = stat.value
-                clearInterval(timer)
-              }
-              setCounts((prev) => {
-                const newCounts = [...prev]
-                newCounts[index] = current
-                return newCounts
-              })
-            }, 50) // 1.5 second total animation (30 steps * 50ms)
-          })
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true)
+          startAnimation()
+        } else if (!entry.isIntersecting && isVisible) {
+          // Reset when leaving viewport
+          setIsVisible(false)
+          intervalsRef.current.forEach(timer => clearInterval(timer))
+          intervalsRef.current = []
+          setCounts([0, 0, 0, 0])
         }
       },
       { threshold: 0.1 }
@@ -54,8 +73,11 @@ export function CertificationStats() {
       observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect()
-  }, [hasAnimated])
+    return () => {
+      observer.disconnect()
+      intervalsRef.current.forEach(timer => clearInterval(timer))
+    }
+  }, [isVisible])
 
   return (
     <div ref={sectionRef} className="mb-16 grid grid-cols-2 md:grid-cols-4 gap-4">
