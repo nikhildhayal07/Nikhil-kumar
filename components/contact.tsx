@@ -51,10 +51,22 @@ export function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Let&apos;s Connect
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             I&apos;m always open to discussing new projects, opportunities, or just
             having a chat about technology.
           </p>
+          
+          {/* Contact Me Button */}
+          <Button
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 mb-8"
+            asChild
+          >
+            <a href="mailto:07nikhilkumar07@gmail.com">
+              <Mail className="mr-2 h-5 w-5" />
+              Contact Me
+            </a>
+          </Button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
