@@ -139,20 +139,20 @@ export function Home() {
 
           {/* Right Column - Profile Photo */}
           <div className="hidden lg:flex justify-center lg:justify-end animate-in fade-in slide-in-from-right-4 duration-1000 delay-300 h-full">
-            <div className="relative w-80 h-96 flex-shrink-0">
+            <div className="relative w-72 h-[28rem] flex-shrink-0">
               {/* Subtle animated gradient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-cyan-500/10 to-blue-500/20 rounded-[40px] blur-2xl animate-pulse opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-cyan-500/10 to-blue-500/20 rounded-[50px] blur-2xl animate-pulse opacity-60" />
               
-              {/* Glassmorphism frame - vertical oval */}
-              <div className="relative w-full h-full rounded-[40px] overflow-hidden border border-primary/30 backdrop-blur-md bg-gradient-to-br from-card/30 to-background/20 shadow-xl p-2">
-                <div className="w-full h-full rounded-[35px] overflow-hidden relative bg-gradient-to-b from-primary/10 to-transparent">
+              {/* Glassmorphism frame - vertical egg-shaped oval */}
+              <div className="relative w-full h-full rounded-[50px] overflow-hidden border border-primary/30 backdrop-blur-md bg-gradient-to-br from-card/30 to-background/20 shadow-xl p-3">
+                <div className="w-full h-full rounded-[48px] overflow-hidden relative bg-gradient-to-b from-primary/10 to-transparent flex items-center justify-center pt-6">
                   <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cv%20photo-g36pEo4sGITKHqDO2HhXSgXtgQdj4E.png"
                     alt="Nikhil Kumar"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     priority
-                    sizes="(max-width: 1024px) 50vw, 320px"
+                    sizes="(max-width: 1024px) 50vw, 288px"
                   />
                 </div>
               </div>
