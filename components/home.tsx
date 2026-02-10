@@ -7,9 +7,6 @@ import Image from "next/image"
 
 const rotatingRoles = [
   "Cloud Computing Engineer",
-  "AWS Cloud Engineer",
-  "Cloud Architecture",
-  "Cloud Infrastructure Builder",
 ]
 
 function RotatingText() {
