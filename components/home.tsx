@@ -57,79 +57,126 @@ export function Home() {
       </div>
       
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32">
-        <div className="flex flex-col items-center text-center space-y-8">
-          {/* Hero Content - Centered */}
-          <div className="space-y-4 w-full max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              <span className="text-sm text-primary font-medium">Open to Opportunities</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Hero Content */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+            <div className="space-y-4 w-full">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span className="text-sm text-primary font-medium">Open to Opportunities</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-primary leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+                Nikhil Kumar
+              </h1>
+              <p className="text-xl md:text-2xl lg:text-2xl text-foreground font-semibold animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+                {'<'} <RotatingText /> {'>'}
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground font-medium animate-in fade-in slide-in-from-bottom-4 duration-700 delay-250">
+                Building scalable cloud infrastructure that transforms ideas into impact.
+              </p>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-primary leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-              Nikhil Kumar
-            </h1>
-            <p className="text-xl md:text-2xl lg:text-2xl text-foreground font-semibold animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-              {'<'} <RotatingText /> {'>'}
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground font-medium animate-in fade-in slide-in-from-bottom-4 duration-700 delay-250">
-              Building scalable cloud infrastructure that transforms ideas into impact.
-            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+              <Button
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+                asChild
+              >
+                <a href="#about">
+                  Learn More
+                  <ArrowDown className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary transition-all hover:scale-105 bg-transparent"
+                asChild
+              >
+                <a href="https://blobs.vusercontent.net/blob/Nikhil%20Kumar%20CV-RjQCLKpEIqUblIGFTaSDrsR9cIg4sE.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center justify-center lg:justify-start gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
+              <a
+                href="https://github.com/nikhildhayal07"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5 text-foreground" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nikhilkumar05/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 text-foreground" />
+              </a>
+              <a
+                href="mailto:07nikhilkumar07@gmail.com"
+                className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5 text-foreground" />
+              </a>
+            </div>
           </div>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
-              asChild
-            >
-              <a href="#about">
-                Learn More
-                <ArrowDown className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary transition-all hover:scale-105 bg-transparent"
-              asChild
-            >
-              <a href="https://blobs.vusercontent.net/blob/Nikhil%20Kumar%20CV-RjQCLKpEIqUblIGFTaSDrsR9cIg4sE.pdf" target="_blank" rel="noopener noreferrer">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex items-center justify-center gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
-            <a
-              href="https://github.com/nikhildhayal07"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5 text-foreground" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/nikhilkumar05/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5 text-foreground" />
-            </a>
-            <a
-              href="mailto:07nikhilkumar07@gmail.com"
-              className="p-3 rounded-xl bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5 text-foreground" />
-            </a>
+          {/* Right Column - Profile Photo */}
+          <div className="hidden lg:flex justify-center lg:justify-end animate-in fade-in slide-in-from-right-4 duration-1000 delay-300 h-full">
+            <div className="relative w-72 h-[28rem] flex-shrink-0 opacity-85">
+              {/* Minimal animated gradient glow */}
+              <svg className="absolute inset-0 w-full h-full blur-3xl animate-pulse opacity-40 pointer-events-none" viewBox="0 0 280 440" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(var(--color-primary) / 0.08)" />
+                    <stop offset="50%" stopColor="rgb(34, 211, 238 / 0.05)" />
+                    <stop offset="100%" stopColor="rgb(59, 130, 246 / 0.08)" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="140" cy="220" rx="140" ry="220" fill="url(#glowGradient)" />
+              </svg>
+              
+              {/* Oval portrait frame */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 280 440" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(from var(--color-card) / 0.3)" />
+                    <stop offset="100%" stopColor="rgb(from var(--color-background) / 0.1)" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="140" cy="220" rx="140" ry="220" fill="url(#frameGradient)" stroke="rgb(from var(--color-primary) / 0.15)" strokeWidth="1" />
+              </svg>
+              
+              {/* Image container */}
+              <div className="absolute inset-0 flex items-center justify-center pt-6">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cv%20photo-g36pEo4sGITKHqDO2HhXSgXtgQdj4E.png"
+                  alt="Nikhil Kumar"
+                  width={264}
+                  height={420}
+                  className="object-contain brightness-95 contrast-95"
+                  priority
+                  style={{ 
+                    clipPath: "ellipse(50% 50%)",
+                    maxWidth: "90%",
+                    height: "auto"
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
