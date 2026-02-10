@@ -86,8 +86,8 @@ export function Home() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
                 asChild
               >
-                <a href="#projects">
-                  View Projects
+                <a href="#about">
+                  Learn More
                   <ArrowDown className="ml-2 h-4 w-4" />
                 </a>
               </Button>
