@@ -141,36 +141,44 @@ export function Home() {
           <div className="hidden lg:flex justify-center lg:justify-end animate-in fade-in slide-in-from-right-4 duration-1000 delay-300 h-full">
             <div className="relative w-72 h-[28rem] flex-shrink-0 opacity-85">
               {/* Minimal animated gradient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-cyan-500/5 to-blue-500/8 blur-3xl animate-pulse opacity-40" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }} />
+              <svg className="absolute inset-0 w-full h-full blur-3xl animate-pulse opacity-40 pointer-events-none" viewBox="0 0 280 440" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(var(--color-primary) / 0.08)" />
+                    <stop offset="50%" stopColor="rgb(34, 211, 238 / 0.05)" />
+                    <stop offset="100%" stopColor="rgb(59, 130, 246 / 0.08)" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="140" cy="220" rx="140" ry="220" fill="url(#glowGradient)" />
+              </svg>
               
-              {/* Glassmorphism frame - vertical egg-shaped oval */}
-              <div className="relative w-full h-full overflow-hidden border border-primary/15 backdrop-blur-md bg-gradient-to-br from-card/20 to-background/10 shadow-sm p-3" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }}>
-                <div className="w-full h-full overflow-hidden relative bg-gradient-to-b from-primary/5 to-transparent flex items-center justify-center pt-6" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }}>
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cv%20photo-g36pEo4sGITKHqDO2HhXSgXtgQdj4E.png"
-                    alt="Nikhil Kumar"
-                    fill
-                    className="object-contain brightness-95 contrast-95"
-                    priority
-                    sizes="(max-width: 1024px) 50vw, 288px"
-                  />
-                </div>
+              {/* Oval portrait frame */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 280 440" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(from var(--color-card) / 0.3)" />
+                    <stop offset="100%" stopColor="rgb(from var(--color-background) / 0.1)" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="140" cy="220" rx="140" ry="220" fill="url(#frameGradient)" stroke="rgb(from var(--color-primary) / 0.15)" strokeWidth="1" />
+              </svg>
+              
+              {/* Image container */}
+              <div className="absolute inset-0 flex items-center justify-center pt-6">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cv%20photo-g36pEo4sGITKHqDO2HhXSgXtgQdj4E.png"
+                  alt="Nikhil Kumar"
+                  width={264}
+                  height={420}
+                  className="object-contain brightness-95 contrast-95"
+                  priority
+                  style={{ 
+                    clipPath: "ellipse(50% 50%)",
+                    maxWidth: "90%",
+                    height: "auto"
+                  }}
+                />
               </div>
-
-              {/* Subtle floating animation */}
-              <style jsx>{`
-                @keyframes float {
-                  0%, 100% {
-                    transform: translateY(0px);
-                  }
-                  50% {
-                    transform: translateY(-8px);
-                  }
-                }
-                div {
-                  animation: float 4s ease-in-out infinite;
-                }
-              `}</style>
             </div>
           </div>
         </div>
