@@ -64,12 +64,12 @@ export function Home() {
           {/* Centered Hero Content - Left Column */}
           <div className="flex flex-col items-start lg:items-start text-left lg:text-left space-y-8 mb-16 lg:mb-0">
             <div className="space-y-4 w-full">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/40 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700 shadow-lg shadow-primary/20">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                <span className="text-sm text-primary font-medium">Open to Opportunities</span>
+                <span className="text-sm text-primary font-semibold">Open to Opportunities</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
                 <span className="text-primary">Nikhil Kumar</span>
