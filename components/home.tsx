@@ -141,11 +141,11 @@ export function Home() {
           <div className="hidden lg:flex justify-center lg:justify-end animate-in fade-in slide-in-from-right-4 duration-1000 delay-300 h-full">
             <div className="relative w-72 h-[28rem] flex-shrink-0 opacity-85">
               {/* Minimal animated gradient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-cyan-500/5 to-blue-500/8 rounded-[50px] blur-3xl animate-pulse opacity-40" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-cyan-500/5 to-blue-500/8 blur-3xl animate-pulse opacity-40" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }} />
               
               {/* Glassmorphism frame - vertical egg-shaped oval */}
-              <div className="relative w-full h-full rounded-[50px] overflow-hidden border border-primary/15 backdrop-blur-md bg-gradient-to-br from-card/20 to-background/10 shadow-sm p-3">
-                <div className="w-full h-full rounded-[48px] overflow-hidden relative bg-gradient-to-b from-primary/5 to-transparent flex items-center justify-center pt-6">
+              <div className="relative w-full h-full overflow-hidden border border-primary/15 backdrop-blur-md bg-gradient-to-br from-card/20 to-background/10 shadow-sm p-3" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }}>
+                <div className="w-full h-full overflow-hidden relative bg-gradient-to-b from-primary/5 to-transparent flex items-center justify-center pt-6" style={{ borderRadius: "50% 50% 50% 50% / 65% 65% 35% 35%" }}>
                   <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cv%20photo-g36pEo4sGITKHqDO2HhXSgXtgQdj4E.png"
                     alt="Nikhil Kumar"
